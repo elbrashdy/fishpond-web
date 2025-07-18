@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import Pusher from "pusher-js";
 import {BehaviorSubject} from "rxjs";
+import {Utility} from "../../shared/Utility";
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class SensorService {
   ph$ = this.phSubject.asObservable();
 
   constructor() {
-    this.pusherClient = new Pusher('', {
+    this.pusherClient = new Pusher(Utility.apiUrl, {
       cluster: 'ap2'
     });
 
