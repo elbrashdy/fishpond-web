@@ -1,0 +1,5 @@
+<button [disabled]="disabled || isLoading" [ngClass]="btnClasses" (click)="click($event)">
+<!--  <fa-icon *ngIf="icon" [icon]="icon" class="text-xs"></fa-icon>-->
+  <span>{{ name + (isLoading ? '...' : '')}}</span>
+</button>
+

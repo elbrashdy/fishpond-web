@@ -1,0 +1,11 @@
+<div *ngIf="isOpen" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+  <div [classList]="(width == null ? ' max-w-lg w-full  ' : width) +  ' bg-white rounded shadow-lg  '">
+    <div class="flex items-center w-full p-3 border-b justify-between p-0.5">
+      <h2 class="text-lg font-semibold ">{{ heading }}</h2>
+      <button (click)="onClose.emit()" class="border  h-7 font-semibold text-center w-7 border rounded text-center ">X</button>
+    </div>
+    <div class="py-2 px-4 max-h-[85vh] overflow-y-auto">
+      <ng-content />
+    </div>
+  </div>
+</div>

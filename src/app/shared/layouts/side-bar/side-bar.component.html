@@ -1,0 +1,39 @@
+<aside class="overflow-auto bg-white rounded-r-xl w-[192px] h-screen shadow-lg">
+  <div class="h-12 flex items-center justify-center w-full border-b">
+    <p class="text-xl font-semibold">AQUA<span class="italic">CULTURE</span></p>
+  </div>
+
+  <!-- Nav Links -->
+  <div class="flex flex-col text-white p-1 mt-2">
+    <div *ngFor="let item of sideContents">
+      <!-- Category Title -->
+      <p class="w-full px-3 my-1 text-[10px] font-bold text-gray-500">{{ item.category | uppercase }}</p>
+      <ul class="list-none p-0 m-0 space-y-1">
+        <li *ngFor="let nav of item.items" class="p-0 m-0 text-black">
+          <a *ngIf="nav.children.length === 0" [routerLink]="nav.link" routerLinkActive="bg-gray-200 text-primary" [routerLinkActiveOptions]="{ exact: true }" class="block px-3 py-1.5 text-sm font-medium rounded transition hover:bg-gray-100">
+            <!--              <fa-icon [icon]="nav.icon"></fa-icon>-->
+            <span class="ml-2 text-sm">{{ nav.title }}</span>
+          </a>
+
+          <!-- Expandable Menu for Items with Children -->
+          <div *ngIf="nav.children.length !== 0" routerLinkActive="bg-gray-200 text-primary" [class]="'px-3 text-black py-1.5 cursor-pointer flex items-center justify-between ' + (nav?.expanded == true ?  ' bg-gray-200 rounded ' : ' ') " (click)="toggleSubmenu(nav)">
+            <div class="flex items-center">
+              <!--                <fa-icon [icon]="nav.icon"></fa-icon>-->
+              <span class="ml-2 text-sm">{{ nav.title }}</span>
+            </div> </div>
+
+          <!-- Submenu -->
+          <ul *ngIf="nav.expanded" class="pl-5 space-y-1  border-gray-300">
+            <li class="border-l" *ngFor="let sub of nav.children">
+              <a [routerLink]="sub.link" routerLinkActive="font-bold" [routerLinkActiveOptions]="{ exact: true }" class="block py-1 text-sm transition hover:text-gray-900">
+                <!--                  <fa-icon [icon]="sub.icon"></fa-icon>-->
+                <span class="ml-2 text-sm">{{ sub.title }}</span>
+              </a>
+            </li>
+          </ul>
+
+        </li>
+      </ul>
+    </div>
+  </div>
+</aside>

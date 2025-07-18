@@ -1,0 +1,18 @@
+<div class="  bg-cover bg-center">
+  <div class="backdrop-brightness-[.24] flex items-center justify-center h-screen">
+    <div class="rounded w-96 bg-white bg-opacity-80 border py-7">
+      <p class="text-center font-semibold text-3xl">AQUA<span class="italic">CULTURE</span></p>
+      <form (ngSubmit)="login()" [formGroup]="loginForm" class="p-4 space-y-3">
+        <email-field name="email" label="Email Address" placeholder="example@domain.com" [form]="loginForm"  />
+        <password-field name="password" label="Password" placeholder="******" [form]="loginForm"  />
+        <div class="flex justify-end text-blue-900">
+          <a href="" class="" >Forgot password?</a>
+        </div>
+        <submit-button [isLoading]="isLoading" [form]="loginForm" name="Login" />
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!--bg-[url('assets/images/auth-bg.png')]-->

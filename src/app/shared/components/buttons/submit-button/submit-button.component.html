@@ -1,0 +1,14 @@
+<div class="flex justify-end">
+  <button [disabled]="!form.valid || isLoading"
+          class="bg-primary-500
+        mt-2 hover:bg-primary-400
+        active:bg-primary-600 text-white
+        disabled:bg-primary-200
+        text-sm
+        rounded px-2 py-0.5"
+          type="submit"
+  >
+    {{ name + (isLoading ? '...' : '') }}
+  </button>
+
+</div>

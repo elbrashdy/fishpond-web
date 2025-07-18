@@ -1,0 +1,39 @@
+<div>
+  <app-button name="Register User"
+              (onClick)="isCreateModalOpen = true;" />
+
+  <data-table
+    heading="User's management"
+    [data]="users"
+    [columns]="columns"
+    [currentPage]="currentPage"
+    [actions]="['edit']"
+    [totalItems]="totalItems"
+    (pageChange)="onPageChange($event)"
+    (perPageChange)="onPerPageChange($event)"
+    (onEdit)="openEditModal($event)"
+  />
+
+</div>
+
+<modal width="w-5/12" [isOpen]="isCreateModalOpen" heading="Register User" (onClose)="isCreateModalOpen = false" >
+
+  <form [formGroup]="userForm" (ngSubmit)="submit()" class="p-3 space-y-3">
+    <text-field label="Name" name="name" placeholder="Full name" [form]="userForm" />
+    <email-field label="Email Adress" name="email" placeholder="info@example.com" [form]="userForm" />
+    <password-field label="Password" name="password" placeholder="*********" [form]="userForm" />
+    <password-field label="Password confirmation" name="password_confirmation" placeholder="*********" [form]="userForm" />
+    <submit-button [form]="userForm" [isLoading]="isSubmiting" name="Submit" />
+  </form>
+
+</modal>
+
+<modal width="w-5/12" [isOpen]="isChangePasswordModalOpen" heading="Change user password" (onClose)="isChangePasswordModalOpen = false" >
+
+  <form [formGroup]="changePasswordForm" (ngSubmit)="changePassword()" class="p-3 space-y-3">
+    <password-field label="New Password" name="password" placeholder="*********" [form]="changePasswordForm" />
+    <submit-button [form]="changePasswordForm" [isLoading]="isSubmiting" name="Submit" />
+  </form>
+
+</modal>
+
